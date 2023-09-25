@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Stage : MonoBehaviour
 {
@@ -64,6 +65,18 @@ public class Stage : MonoBehaviour
             moveDir.y = -1;
         }
 
+        if (Input.GetKeyDown("space"))
+        {
+            // 테트로미노가 바닥에 닿을 때까지 아래로 이동
+            while (MoveTetromino(Vector3.down, false))
+            {
+            }
+        }
+        if (Input.GetKeyDown("r"))
+        {
+            // SceneManager을 이용하여 게임 재시작하기
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
         // 아무런 키 입력이 없을경우 Tetromino 움직이지 않게하기
         if (moveDir != Vector3.zero || isRotate)
         {
@@ -105,10 +118,41 @@ public class Stage : MonoBehaviour
             tetrominoNode.transform.position = oldPos;
             tetrominoNode.transform.rotation = oldRot;
 
+            //바닥에 닿았다는 의미 = 이동 불가하고 현재 아래로 떨어지고 있는 상황
+            if ((int)moveDir.y == -1 && (int)moveDir.x == 0 && isRotate == false)
+            {
+                AddToBoard(tetrominoNode);
+                CheckBoardColumn();
+                CreateTetromino();
+            }
+
             return false;
         }
 
         return true;
+    }
+
+    // 테트로미노를 보드에 추가
+    void AddToBoard(Transform root)
+    {
+        while (root.childCount > 0)
+        {
+            var node = root.GetChild(0);
+
+            //유니티 좌표계에서 테트리스 좌표계로 변환
+            int x = Mathf.RoundToInt(node.transform.position.x + halfWidth);
+            int y = Mathf.RoundToInt(node.transform.position.y + halfHeight - 1);
+
+            //부모노드 : 행 노드(y 위치), 오브젝트 이름 : x 위치
+            node.parent = boardNode.Find(y.ToString());
+            node.name = x.ToString();
+        }
+    }
+
+    // 보드에 완성된 행이 있으면 삭제
+    void CheckBoardColumn()
+    {
+
     }
 
     // 이동 가능한지 체크 후 True or False 반환하는 메서드
@@ -127,6 +171,11 @@ public class Stage : MonoBehaviour
             if (x < 0 || x > boardWidth - 1)
                 return false;
             if (y < 0)
+                return false;
+
+            var column = boardNode.Find(y.ToString());
+
+            if (column != null && column.Find(x.ToString()) != null)
                 return false;
 
         }
