@@ -28,6 +28,18 @@ public class Tile : MonoBehaviour
         }
     }
 
+    public Sprite sprite
+    {
+        set
+        {
+            spriteRenderer.sprite = value;
+        }
+        get
+        {
+            return spriteRenderer.sprite;
+        }
+    }
+
     public int sortingOrder
     {
         set

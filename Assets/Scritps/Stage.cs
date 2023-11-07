@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class Stage : MonoBehaviour
 {
@@ -29,6 +30,16 @@ public class Stage : MonoBehaviour
     private int halfHeight;
 
     private float nextFallTime; // 다음에 테트로미노가 떨어질 시간을 저장
+
+    [Header("TetrominoSprite")]
+    public Sprite Basic;
+    public Sprite KirbyI;
+    public Sprite KirbyL;
+    public Sprite KirbyJ;
+    public Sprite KirbyO;
+    public Sprite KirbyZ;
+    public Sprite KirbyS;
+    public Sprite KirbyT;
 
     private void Start() 
     {
@@ -277,6 +288,7 @@ public class Stage : MonoBehaviour
         //int index = 1; 
 
         Color32 color = Color.white;
+        Sprite img = Basic;
 
         // 회전 계산에 사용하기 위한 쿼터니언 클래스
         tetrominoNode.rotation = Quaternion.identity;
@@ -288,65 +300,73 @@ public class Stage : MonoBehaviour
             // 구분을 위해 테트리스 모양에 비슷하게 영어로 표현 (I, J, L ,O, S, T, Z)
 
             case 0: // I
-                color = new Color32(115, 251, 253, 255);    // 하늘색
-                CreateTile(tetrominoNode, new Vector2(-2f, 0.0f), color);
-                CreateTile(tetrominoNode, new Vector2(-1f, 0.0f), color);
-                CreateTile(tetrominoNode, new Vector2(0f, 0.0f), color);
-                CreateTile(tetrominoNode, new Vector2(1f, 0.0f), color);
+                color = new Color32(255, 255, 255, 255);    // 하늘색
+                img = KirbyI;
+                CreateTile(tetrominoNode, new Vector2(-2f, 0.0f), color, img);
+                CreateTile(tetrominoNode, new Vector2(-1f, 0.0f), color, img);
+                CreateTile(tetrominoNode, new Vector2(-1f, 0.0f), color, img);
+                CreateTile(tetrominoNode, new Vector2(0f, 0.0f), color, img);
+                CreateTile(tetrominoNode, new Vector2(1f, 0.0f), color, img);
                 break;
 
             case 1: // J
-                color = new Color32(0, 33, 245, 255);    // 파란색
-                CreateTile(tetrominoNode, new Vector2(-1f, 0.0f), color);
-                CreateTile(tetrominoNode, new Vector2(0f, 0.0f), color);
-                CreateTile(tetrominoNode, new Vector2(1f, 0.0f), color);
-                CreateTile(tetrominoNode, new Vector2(-1f, 1.0f), color);
+                color = new Color32(255, 255, 255, 255);    // 파란색
+                img = KirbyJ;
+                CreateTile(tetrominoNode, new Vector2(-1f, 0.0f), color, img);
+                CreateTile(tetrominoNode, new Vector2(0f, 0.0f), color, img);
+                CreateTile(tetrominoNode, new Vector2(1f, 0.0f), color, img);
+                CreateTile(tetrominoNode, new Vector2(-1f, 1.0f), color, img);
                 break;
 
             case 2: // L
-                color = new Color32(243, 168, 59, 255);    // 주황색
-                CreateTile(tetrominoNode, new Vector2(-1f, 0.0f), color);
-                CreateTile(tetrominoNode, new Vector2(0f, 0.0f), color);
-                CreateTile(tetrominoNode, new Vector2(1f, 0.0f), color);
-                CreateTile(tetrominoNode, new Vector2(1f, 1.0f), color);
+                color = new Color32(255, 255, 255, 255);    // 주황색
+                img = KirbyL;
+                CreateTile(tetrominoNode, new Vector2(-1f, 0.0f), color, img);
+                CreateTile(tetrominoNode, new Vector2(0f, 0.0f), color, img);
+                CreateTile(tetrominoNode, new Vector2(1f, 0.0f), color, img);
+                CreateTile(tetrominoNode, new Vector2(1f, 1.0f), color, img);
                 break;
 
             case 3: // O 
-                color = new Color32(255, 253, 84, 255);    // 노란색
-                CreateTile(tetrominoNode, new Vector2(0f, 0f), color);
-                CreateTile(tetrominoNode, new Vector2(1f, 0f), color);
-                CreateTile(tetrominoNode, new Vector2(0f, 1f), color);
-                CreateTile(tetrominoNode, new Vector2(1f, 1f), color);
+                color = new Color32(255, 255, 255, 255);    // 노란색 
+                img = KirbyO;
+                CreateTile(tetrominoNode, new Vector2(0f, 0f), color, img);
+                CreateTile(tetrominoNode, new Vector2(1f, 0f), color, img);
+                CreateTile(tetrominoNode, new Vector2(0f, 1f), color, img);
+                CreateTile(tetrominoNode, new Vector2(1f, 1f), color, img);
                 break;
 
             case 4: //  S
-                color = new Color32(117, 250, 76, 255);    // 녹색
-                CreateTile(tetrominoNode, new Vector2(-1f, -1f), color);
-                CreateTile(tetrominoNode, new Vector2(0f, -1f), color);
-                CreateTile(tetrominoNode, new Vector2(0f, 0f), color);
-                CreateTile(tetrominoNode, new Vector2(1f, 0f), color);
+                color = new Color32(255, 255, 255, 255);    // 녹색
+                img = KirbyS;
+                CreateTile(tetrominoNode, new Vector2(-1f, -1f), color, img);
+                CreateTile(tetrominoNode, new Vector2(0f, -1f), color,img);
+                CreateTile(tetrominoNode, new Vector2(0f, 0f), color,img);
+                CreateTile(tetrominoNode, new Vector2(1f, 0f), color, img);
                 break;
 
             case 5: //  T
-                color = new Color32(155, 47, 246, 255);    // 자주색
-                CreateTile(tetrominoNode, new Vector2(-1f, 0f), color);
-                CreateTile(tetrominoNode, new Vector2(0f, 0f), color);
-                CreateTile(tetrominoNode, new Vector2(1f, 0f), color);
-                CreateTile(tetrominoNode, new Vector2(0f, 1f), color);
+                color = new Color32(255, 255, 255, 255);    // 자주색
+                img = KirbyT;
+                CreateTile(tetrominoNode, new Vector2(-1f, 0f), color, img);
+                CreateTile(tetrominoNode, new Vector2(0f, 0f), color,img);
+                CreateTile(tetrominoNode, new Vector2(1f, 0f), color,img);
+                CreateTile(tetrominoNode, new Vector2(0f, 1f), color,img);
                 break;
 
             case 6: // Z
-                color = new Color32(235, 51, 35, 255);    // 빨간색
-                CreateTile(tetrominoNode, new Vector2(-1f, 1f), color);
-                CreateTile(tetrominoNode, new Vector2(0f, 1f), color);
-                CreateTile(tetrominoNode, new Vector2(0f, 0f), color);
-                CreateTile(tetrominoNode, new Vector2(1f, 0f), color);
+                color = new Color32(255, 255, 255, 255);    // 빨간색
+                img = KirbyZ;
+                CreateTile(tetrominoNode, new Vector2(-1f, 1f), color,img);
+                CreateTile(tetrominoNode, new Vector2(0f, 1f), color,img);
+                CreateTile(tetrominoNode, new Vector2(0f, 0f), color,img);
+                CreateTile(tetrominoNode, new Vector2(1f, 0f), color, img);
                 break;
         }
     }
 
 // 타일 생성
-Tile CreateTile(Transform parent, Vector2 position, Color color, int order = 1)
+Tile CreateTile(Transform parent, Vector2 position, Color color, Sprite img, int order = 1 )
     {
         var go = Instantiate(tilePrefab); // tilePrefab를 복제한 오브젝트 생성
         go.transform.parent = parent; // 부모 지정
@@ -354,6 +374,7 @@ Tile CreateTile(Transform parent, Vector2 position, Color color, int order = 1)
 
         var tile = go.GetComponent<Tile>(); // tilePrefab의 Tile스크립트 불러오기
         tile.color = color; // 색상 지정
+        tile.sprite = img; // 스프라이트
         tile.sortingOrder = order; // 순서 지정
 
         return tile;
@@ -362,14 +383,14 @@ Tile CreateTile(Transform parent, Vector2 position, Color color, int order = 1)
     void CreateBackground()
     {
         Color color = Color.gray;   // 배경 색 설정(원하는 색으로 설정 가능)
-
+        Sprite img = Basic; // 기본 스프라이트로 설정
         // 타일 보드
         color.a = 0.5f; // 테두리와 구분 위해 투명도 바꾸기
         for (int x = -halfWidth; x < halfWidth; ++x)
         {
             for (int y = halfHeight; y > -halfHeight; --y)
             {
-                CreateTile(backgroundNode, new Vector2(x, y), color, 0);
+                CreateTile(backgroundNode, new Vector2(x, y), color, img,  0);
             }
         }
 
@@ -377,14 +398,14 @@ Tile CreateTile(Transform parent, Vector2 position, Color color, int order = 1)
         color.a = 1.0f;
         for (int y = halfHeight; y > -halfHeight; --y)
         {
-            CreateTile(backgroundNode, new Vector2(-halfWidth - 1, y), color, 0);
-            CreateTile(backgroundNode, new Vector2(halfWidth, y), color, 0);
+            CreateTile(backgroundNode, new Vector2(-halfWidth - 1, y), color, img, 0);
+            CreateTile(backgroundNode, new Vector2(halfWidth, y), color, img, 0);
         }
 
         // 아래 테두리
         for (int x = -halfWidth - 1; x <= halfWidth; ++x)
         {
-            CreateTile(backgroundNode, new Vector2(x, -halfHeight), color, 0);
+            CreateTile(backgroundNode, new Vector2(x, -halfHeight), color, img, 0);
         }
     }
 }

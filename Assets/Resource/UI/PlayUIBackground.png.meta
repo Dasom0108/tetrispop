@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -121,7 +121,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: PlayUIBackground_0
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 111
+        width: 433
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11bf50ee7dedca546a9c8709c29c2c0e
+      internalID: -1507893384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayUIBackground_1
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 113
+        width: 433
+        height: 862
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f13dfbbc7a5b6f9489c3ca97a42e68cd
+      internalID: 1249484486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayUIBackground_2
+      rect:
+        serializedVersion: 2
+        x: 1167
+        y: 112
+        width: 433
+        height: 863
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51254f9f6b3325b49ae3d485c1412af1
+      internalID: 1718488246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayUIBackground_3
+      rect:
+        serializedVersion: 2
+        x: 1671
+        y: 113
+        width: 433
+        height: 862
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1096f36bcb9ba743a8dfc298ff59d26
+      internalID: -2123848320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +216,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PlayUIBackground_0: -1507893384
+      PlayUIBackground_1: 1249484486
+      PlayUIBackground_2: 1718488246
+      PlayUIBackground_3: -2123848320
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
