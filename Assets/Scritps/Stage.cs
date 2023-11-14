@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using UnityEngine.UI;
+using TMPro;
 
 public class Stage : MonoBehaviour
 {
+
+
     //필요 소스 불러오기
     [Header("Source")]
     public GameObject tilePrefab;
@@ -13,6 +17,11 @@ public class Stage : MonoBehaviour
     public Transform boardNode;
     public Transform tetrominoNode;
     public GameObject gameoverPanel;
+    public Transform previewNode;
+
+    public TextMeshProUGUI score;
+    public TextMeshProUGUI level;
+    public TextMeshProUGUI line;
 
     [Header("Setting")]
     [Range(4, 40)]
@@ -41,8 +50,22 @@ public class Stage : MonoBehaviour
     public Sprite KirbyS;
     public Sprite KirbyT;
 
+
+    // UI 관련 변수
+    private int scoreVal = 0;
+    private int levelVal = 1;
+    private int lineVal;
+
+    private int indexVal = -1;
+
     private void Start() 
     {
+        // 게임 시작시 text 설정
+        lineVal = levelVal * 2;   // 임시 레벨 디자인
+        score.text = "Score: " + scoreVal;
+        level.text = "Lv: " + levelVal;
+        line.text = "Line: " + lineVal;
+
         // 게임 시작시 게임오버 패널 off
         gameoverPanel.SetActive(false);
 
@@ -195,11 +218,13 @@ public class Stage : MonoBehaviour
     void CheckBoardColumn()
     {
         bool isCleared = false;
+        //한번에 사라진 행 개수 확인용
+        int linecount = 0;
 
         // 완성된 행 == 행의 자식 갯수가 가로 크기
         foreach (Transform column in boardNode)
         {
-            if (column.childCount == boardWidth)
+            if (column.childCount >= boardWidth)
             {
                 //행의 모든 자식을 삭제
                 foreach (Transform tile in column)
@@ -209,8 +234,32 @@ public class Stage : MonoBehaviour
                 // 행의 모든 자식들과의 연결 끊기
                 column.DetachChildren();
                 isCleared = true;
+                linecount++;
             }
         }
+        Debug.Log(linecount);
+        // 완성된 행이 있을경우 점수증가
+        if (linecount != 0)
+        {
+            Debug.Log("work");
+            scoreVal += linecount * linecount * 100;
+            score.text = "Score: " + scoreVal;
+        }
+        // 완성된 행이 있을경우 남은라인 감소
+        if (linecount != 0)
+        {
+            lineVal -= linecount;
+            // 레벨업까지 필요 라인 도달경우 (최대 레벨 10으로 한정)
+            if (lineVal <= 0 && levelVal <= 10)
+            {
+                levelVal += 1;  // 레벨증가
+                lineVal = levelVal * 2 + lineVal;   // 남은 라인 갱신
+                fallCycle = 0.1f * (10 - levelVal); // 속도 증가
+            }
+            level.text = "Lv: " + levelVal;
+            line.text = "Line: " + lineVal;
+        }
+
         // 비어 있는 행이 존재하면 아래로 내리기
         if (isCleared)
         {
@@ -252,6 +301,84 @@ public class Stage : MonoBehaviour
         }
     }
 
+    // 테트로미노 미리보기
+    void CreatePreview()
+    {
+        // 이미 있는 미리보기 삭제하기
+        foreach (Transform tile in previewNode)
+        {
+            Destroy(tile.gameObject);
+        }
+        previewNode.DetachChildren();
+
+        indexVal = Random.Range(0, 7);
+
+        Color32 color = Color.white;
+
+        // 미리보기 테트로미노 생성 위치 (우측 상단)
+        previewNode.position = new Vector2(halfWidth + 5, halfHeight - 1);
+
+        switch (indexVal)
+        {
+            case 0: // I
+                color = new Color32(115, 251, 253, 255);    // 하늘색
+                CreateTile(previewNode, new Vector2(-2f, 0.0f), color, Basic);
+                CreateTile(previewNode, new Vector2(-1f, 0.0f), color, Basic);
+                CreateTile(previewNode, new Vector2(0f, 0.0f), color, Basic);
+                CreateTile(previewNode, new Vector2(1f, 0.0f), color, Basic);
+                break;
+
+            case 1: // J
+                color = new Color32(0, 33, 245, 255);    // 파란색
+                CreateTile(previewNode, new Vector2(-1f, 0.0f), color, Basic);
+                CreateTile(previewNode, new Vector2(0f, 0.0f), color, Basic);
+                CreateTile(previewNode, new Vector2(1f, 0.0f), color, Basic);
+                CreateTile(previewNode, new Vector2(-1f, 1.0f), color, Basic);
+                break;
+
+            case 2: // L
+                color = new Color32(243, 168, 59, 255);    // 주황색
+                CreateTile(previewNode, new Vector2(-1f, 0.0f), color, Basic);
+                CreateTile(previewNode, new Vector2(0f, 0.0f), color, Basic);
+                CreateTile(previewNode, new Vector2(1f, 0.0f), color, Basic);
+                CreateTile(previewNode, new Vector2(1f, 1.0f), color, Basic);
+                break;
+
+            case 3: // O 
+                color = new Color32(255, 253, 84, 255);    // 노란색
+                CreateTile(previewNode, new Vector2(0f, 0f), color, Basic);
+                CreateTile(previewNode, new Vector2(1f, 0f), color, Basic);
+                CreateTile(previewNode, new Vector2(0f, 1f), color, Basic);
+                CreateTile(previewNode, new Vector2(1f, 1f), color, Basic);
+                break;
+
+            case 4: //  S
+                color = new Color32(117, 250, 76, 255);    // 녹색
+                CreateTile(previewNode, new Vector2(-1f, -1f), color, Basic);
+                CreateTile(previewNode, new Vector2(0f, -1f), color, Basic);
+                CreateTile(previewNode, new Vector2(0f, 0f), color, Basic);
+                CreateTile(previewNode, new Vector2(1f, 0f), color, Basic);
+                break;
+
+            case 5: //  T
+                color = new Color32(155, 47, 246, 255);    // 자주색
+                CreateTile(previewNode, new Vector2(-1f, 0f), color, Basic);
+                CreateTile(previewNode, new Vector2(0f, 0f), color, Basic);
+                CreateTile(previewNode, new Vector2(1f, 0f), color, Basic);
+                CreateTile(previewNode, new Vector2(0f, 1f), color, Basic);
+                break;
+
+            case 6: // Z
+                color = new Color32(235, 51, 35, 255);    // 빨간색
+                CreateTile(previewNode, new Vector2(-1f, 1f), color, Basic);
+                CreateTile(previewNode, new Vector2(0f, 1f), color, Basic);
+                CreateTile(previewNode, new Vector2(0f, 0f), color, Basic);
+                CreateTile(previewNode, new Vector2(1f, 0f), color  , Basic);
+                break;
+        }
+    }
+
+
     // 이동 가능한지 체크 후 True or False 반환하는 메서드
     bool CanMoveTo(Transform root)  //tetrominoNode를 매개변수 root로 가져오기
     {
@@ -283,9 +410,13 @@ public class Stage : MonoBehaviour
     // 테트로미노 생성
     void CreateTetromino()
     {
-        int index = Random.Range(0, 7); // 랜덤으로 0~6 사이의 값 생성
-        //위의 코드 대신 아래와 같은 코드로 원하는 Index모양 확인 가능
-        //int index = 1; 
+        //제일 처음에 나오는 테트로미노인경우
+        int index;
+        if (indexVal == -1)
+        {
+            index = Random.Range(0, 7); // 랜덤으로 0~6 사이의 값 생성
+        }
+        else index = indexVal;  // Preview의 값 가져오기
 
         Color32 color = Color.white;
         Sprite img = Basic;
@@ -363,6 +494,7 @@ public class Stage : MonoBehaviour
                 CreateTile(tetrominoNode, new Vector2(1f, 0f), color, img);
                 break;
         }
+        CreatePreview();
     }
 
 // 타일 생성
