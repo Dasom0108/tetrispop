@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 using UnityEngine.UI;
 using TMPro;
 
-public class Stage : MonoBehaviour
+public class Stage2 : MonoBehaviour
 {
 
 
@@ -42,6 +42,8 @@ public class Stage : MonoBehaviour
     private int halfWidth;
     private int halfHeight;
 
+    public int offset2p = 14;
+
     private float nextFallTime; // 다음에 테트로미노가 떨어질 시간을 저장
 
     [Header("TetrominoSprite")]
@@ -62,17 +64,15 @@ public class Stage : MonoBehaviour
 
     private int indexVal = -1;
 
-    Stage2 stage2;
+    Stage stage;
     private void Start() 
     {
-        stage2 = GameObject.Find("2p Stage").GetComponent<Stage2>();
+        stage = GameObject.Find("1p Stage").GetComponent<Stage>();
         // 게임 시작시 text 설정
         lineVal = levelVal * 2;   // 임시 레벨 디자인
         score.text = "Score: " + scoreVal;
         level.text = "Lv: " + levelVal;
         line.text = "Line: " + lineVal;
-        AtkG = 0;
-        GetDmg = 0;
 
         // 게임 시작시 게임오버 패널 off
         gameoverPanel.SetActive(false);
@@ -113,21 +113,21 @@ public class Stage : MonoBehaviour
             bool isRotate = false;  // 회전 여부 저장용
 
             //각 키에 따라 이동 여부 혹은 회전 여부를 설정해줍니다.
-            if (Input.GetKeyDown("a"))
+            if (Input.GetKeyDown("left"))
             {
                 moveDir.x = -1;
 
             }
-            else if (Input.GetKeyDown("d"))
+            else if (Input.GetKeyDown("right"))
             {
                 moveDir.x = 1;
             }
 
-            if (Input.GetKeyDown("w"))
+            if (Input.GetKeyDown("up"))
             {
                 isRotate = true;
             }
-            else if (Input.GetKeyDown("s"))
+            else if (Input.GetKeyDown("down"))
             {
                 moveDir.y = -1;
             }
@@ -139,7 +139,7 @@ public class Stage : MonoBehaviour
             }
 
 
-            if (Input.GetKeyDown("space"))
+            if (Input.GetKeyDown("/"))
             {
                 // 테트로미노가 바닥에 닿을 때까지 아래로 이동
                 while (MoveTetromino(Vector3.down, false))
@@ -190,12 +190,13 @@ public class Stage : MonoBehaviour
             {
                 AddToBoard(tetrominoNode);
                 CheckBoardColumn();
-                if(GetDmg >= 10)
+                if (GetDmg >= 10)
                 {
                     Attack();
                 }
                 CreateTetromino();
-                Debug.Log("1P" + GetDmg);
+                Debug.Log("2P" + GetDmg);
+
                 //테트로미노 새로 추가 직후 이동 가능 확인
                 if (!CanMoveTo(tetrominoNode))
                 {
@@ -217,7 +218,7 @@ public class Stage : MonoBehaviour
             var node = root.GetChild(0);
 
             //유니티 좌표계에서 테트리스 좌표계로 변환
-            int x = Mathf.RoundToInt(node.transform.position.x + halfWidth);
+            int x = Mathf.RoundToInt(node.transform.position.x + halfWidth) - offset2p;
             int y = Mathf.RoundToInt(node.transform.position.y + halfHeight - 1);
 
             //부모노드 : 행 노드(y 위치), 오브젝트 이름 : x 위치
@@ -241,18 +242,19 @@ public class Stage : MonoBehaviour
                 //행의 모든 자식을 삭제
                 foreach (Transform tile in column)
                 {
-                    if(tile.tag == "Tile")
+                    if (tile.tag == "Tile")
                     {
                         Destroy(tile.gameObject);
                     }
-
                 }
                 // 행의 모든 자식들과의 연결 끊기
                 column.DetachChildren();
                 isCleared = true;
                 linecount++;
                 AtkG = linecount + AtkG;
-                stage2.GetDmg = AtkG;
+                stage.GetDmg = AtkG;
+
+
             }
         }
         Debug.Log(linecount);
@@ -334,7 +336,7 @@ public class Stage : MonoBehaviour
         Color32 color = Color.white;
 
         // 미리보기 테트로미노 생성 위치 (우측 상단)
-        previewNode.position = new Vector2(halfWidth + 5, halfHeight - 1);
+        previewNode.position = new Vector2(halfWidth + 5 + offset2p, halfHeight - 1);
 
         switch (indexVal)
         {
@@ -406,7 +408,7 @@ public class Stage : MonoBehaviour
             var node = root.GetChild(i);
 
             //유니티 좌표계에서 테트리스 좌표계로 변환
-            int x = Mathf.RoundToInt(node.transform.position.x + halfWidth);
+            int x = Mathf.RoundToInt(node.transform.position.x + halfWidth) - offset2p;
             int y = Mathf.RoundToInt(node.transform.position.y + halfHeight - 1);
 
             //이동 가능한 좌표인지 확인 후 반환
@@ -442,7 +444,7 @@ public class Stage : MonoBehaviour
         // 회전 계산에 사용하기 위한 쿼터니언 클래스
         tetrominoNode.rotation = Quaternion.identity;
         // 테트로미노 생성 위치 (중앙 상단)   
-        tetrominoNode.position = new Vector2(0, halfHeight);
+        tetrominoNode.position = new Vector2(offset_x + offset2p, halfHeight + offset_y);
 
         switch (index)
         {
@@ -517,36 +519,17 @@ public class Stage : MonoBehaviour
 
     void Attack()
     {
-        Debug.Log("공격2");
+        Debug.Log("공격1");
         Color32 color = Color.black;
         Sprite img = Basic;
 
-        //한칸 위로
-    
-            //위에서 부터
-            for (int i = boardNode.childCount; i < 0; --i)
-            {
-                var column = boardNode.Find(i.ToString());
-
-                // 현재 행 아래쪽에 빈 행이 존재하는지 확인, 빈 행만큼 emptyCol 증가
-                    var targetColumn = boardNode.Find((i).ToString());
-
-                    while (column.childCount > 0)
-                    {
-                        Transform tile = column.GetChild(0);
-                        tile.parent = targetColumn;
-                        tile.transform.position += new Vector3(0, i+1, 0);
-                    }
-                    column.DetachChildren();
-            }
-
-       CreateTrash(tetrominoNode, new Vector2(0f, 0f), color, img);
+        CreateTrash(tetrominoNode, new Vector2(1f, 0f), color, img);
 
         GetDmg = 0;
     }
 
-// 타일 생성
-Tile CreateTile(Transform parent, Vector2 position, Color color, Sprite img, int order = 1 )
+    // 타일 생성
+    Tile CreateTile(Transform parent, Vector2 position, Color color, Sprite img, int order = 1 )
     {
         var go = Instantiate(tilePrefab); // tilePrefab를 복제한 오브젝트 생성
         go.transform.parent = parent; // 부모 지정
@@ -584,7 +567,7 @@ Tile CreateTile(Transform parent, Vector2 position, Color color, Sprite img, int
         {
             for (int y = halfHeight; y > -halfHeight; --y)
             {
-                CreateTile(backgroundNode, new Vector2(x, y), color, img,  0);
+                CreateTile(backgroundNode, new Vector2(x + offset2p, y), color, img,  0);
             }
         }
 
@@ -592,14 +575,14 @@ Tile CreateTile(Transform parent, Vector2 position, Color color, Sprite img, int
         color.a = 1.0f;
         for (int y = halfHeight; y > -halfHeight; --y)
         {
-            CreateTile(backgroundNode, new Vector2(-halfWidth - 1, y), color, img, 0);
-            CreateTile(backgroundNode, new Vector2(halfWidth, y), color, img, 0);
+            CreateTile(backgroundNode, new Vector2(-halfWidth - 1 + offset2p, y), color, img, 0);
+            CreateTile(backgroundNode, new Vector2(halfWidth + offset2p, y), color, img, 0);
         }
 
         // 아래 테두리
         for (int x = -halfWidth - 1; x <= halfWidth; ++x)
         {
-            CreateTile(backgroundNode, new Vector2(x, -halfHeight), color, img, 0);
+            CreateTile(backgroundNode, new Vector2(x + offset2p, -halfHeight), color, img, 0);
         }
     }
 }
