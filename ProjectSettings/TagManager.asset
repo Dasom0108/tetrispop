@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Trash
   - Tile
+  - Spawner
+  - Pivot
+  - Line
   layers:
   - Default
   - TransparentFX
@@ -13,7 +16,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - BG
   - 
   - 
   - 
@@ -40,6 +43,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BG
+    uniqueID: 1880898665
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
