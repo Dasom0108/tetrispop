@@ -9,6 +9,7 @@ TagManager:
   - Spawner
   - Pivot
   - Line
+  - 1p
   layers:
   - Default
   - TransparentFX

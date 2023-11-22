@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d0b9cb724a19e5b47a8a498987b725b0
+guid: c8e75919bac7a414082b429d315f63e7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -94,7 +94,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Server
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -107,7 +107,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -121,7 +121,112 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: PlayUI_0
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 331
+        width: 109
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 7, y: 7, z: 8, w: 8}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a3690cde4e349b4f85644c0df737858
+      internalID: -1764498704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayUI_1
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 303
+        width: 109
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 9, y: 8, z: 9, w: 42}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5abc4bd31fba90c43a48df1f8223a5d6
+      internalID: -2090829441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayUI_2
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 38
+        width: 46
+        height: 436
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 3, y: 9, z: 4, w: 11}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b416ab169eec824b9aeb97bccc745ce
+      internalID: 1830415528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayUI_3
+      rect:
+        serializedVersion: 2
+        x: 761
+        y: 51
+        width: 23
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 7, z: 0, w: 7}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99df16637fa8deb408d76c43e128b210
+      internalID: -1844609764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayUI_4
+      rect:
+        serializedVersion: 2
+        x: 886
+        y: 52
+        width: 23
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 7, z: 0, w: 8}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d137621a52e5569429596335032df68a
+      internalID: 670783382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +237,12 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PlayUI_0: -1764498704
+      PlayUI_1: -2090829441
+      PlayUI_2: 1830415528
+      PlayUI_3: -1844609764
+      PlayUI_4: 670783382
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

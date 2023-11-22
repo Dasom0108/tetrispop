@@ -337,7 +337,7 @@ public class Stage2 : MonoBehaviour
         Color32 color = Color.white;
 
         // 미리보기 테트로미노 생성 위치 (우측 상단)
-        previewNode.position = new Vector2(halfWidth + 5 + offset2p, halfHeight - 1);
+        previewNode.position = new Vector2(halfWidth + 2.5f + offset2p, halfHeight - 1);
 
         switch (indexVal)
         {
@@ -375,10 +375,10 @@ public class Stage2 : MonoBehaviour
 
             case 4: //  S
                 color = new Color32(117, 250, 76, 255);    // 녹색
-                CreateTile(previewNode, new Vector2(-1f, -1f), color, Basic);
-                CreateTile(previewNode, new Vector2(0f, -1f), color, Basic);
+                CreateTile(previewNode, new Vector2(-1f, 0f), color, Basic);
                 CreateTile(previewNode, new Vector2(0f, 0f), color, Basic);
-                CreateTile(previewNode, new Vector2(1f, 0f), color, Basic);
+                CreateTile(previewNode, new Vector2(0f, 1f), color, Basic);
+                CreateTile(previewNode, new Vector2(1f, 1f), color, Basic);
                 break;
 
             case 5: //  T
