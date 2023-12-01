@@ -126,10 +126,10 @@ TextureImporter:
       name: PlayUIBackground_0
       rect:
         serializedVersion: 2
-        x: 58
-        y: 111
-        width: 433
-        height: 864
+        x: 90
+        y: 55
+        width: 460
+        height: 920
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,10 +147,10 @@ TextureImporter:
       name: PlayUIBackground_1
       rect:
         serializedVersion: 2
-        x: 598
-        y: 113
-        width: 433
-        height: 862
+        x: 565
+        y: 55
+        width: 460
+        height: 920
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,10 +168,10 @@ TextureImporter:
       name: PlayUIBackground_2
       rect:
         serializedVersion: 2
-        x: 1167
-        y: 112
-        width: 433
-        height: 863
+        x: 1040
+        y: 55
+        width: 460
+        height: 920
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,10 +189,10 @@ TextureImporter:
       name: PlayUIBackground_3
       rect:
         serializedVersion: 2
-        x: 1671
-        y: 113
-        width: 433
-        height: 862
+        x: 1515
+        y: 55
+        width: 460
+        height: 920
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

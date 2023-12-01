@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -121,7 +121,322 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: EffectLose_0
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 421
+        width: 62
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83d5e11051a4420419ae1934bce53593
+      internalID: 1914216659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectLose_1
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 412
+        width: 116
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16b2a009b30a2224f8d87da4a69738f8
+      internalID: 486247031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectLose_2
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 402
+        width: 170
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67a0e328d4324614393ea242e11ee60d
+      internalID: -2048438230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectLose_3
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 265
+        width: 217
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a012daee26aa491439e4cb63695a0b2f
+      internalID: 1761011265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectLose_4
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 262
+        width: 238
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb63b8174c2eadc47bc8bb83771074b5
+      internalID: -644591777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectLose_5
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 262
+        width: 238
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38dfeef519c31c94087b3accfbf0953c
+      internalID: 733890585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectLose_6
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 262
+        width: 238
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 792d801dad54dcc44830999450d9d47b
+      internalID: 654288992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectLose_7
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 134
+        width: 238
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94d237a73c53f5e4f8cc52aa85970e3f
+      internalID: -1835046683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectLose_8
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 134
+        width: 238
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 053eeb3bef8ee424bb3dba065d156f64
+      internalID: 828175004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectLose_9
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 134
+        width: 238
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a68eb04bafdb2eb43bb0c3d5c448013b
+      internalID: 594951235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectLose_10
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 133
+        width: 238
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb688115841a2d943b03b23b2fc11b8d
+      internalID: -425722902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectLose_11
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 3
+        width: 238
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63057384891c1ed42a3d0d7cb5f88bc1
+      internalID: 1238433671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectLose_12
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 3
+        width: 238
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 508b607e4df0ea14bad623fda409571a
+      internalID: 317063864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectLose_13
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 3
+        width: 238
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbc6a91579b10334892c9c20389f0af7
+      internalID: 227308051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectLose_14
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 3
+        width: 238
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d9e6777705e0a846b706eb39906bce6
+      internalID: 31628183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +447,22 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      EffectLose_0: 1914216659
+      EffectLose_1: 486247031
+      EffectLose_10: -425722902
+      EffectLose_11: 1238433671
+      EffectLose_12: 317063864
+      EffectLose_13: 227308051
+      EffectLose_14: 31628183
+      EffectLose_2: -2048438230
+      EffectLose_3: 1761011265
+      EffectLose_4: -644591777
+      EffectLose_5: 733890585
+      EffectLose_6: 654288992
+      EffectLose_7: -1835046683
+      EffectLose_8: 828175004
+      EffectLose_9: 594951235
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -121,7 +121,322 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: EffectWin_0
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 424
+        width: 92
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68af9e6cf5bab42438956c21162cbc17
+      internalID: -1021021529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectWin_1
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 407
+        width: 167
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7d0d53372bfb524e89749557fc132fd
+      internalID: -1214080715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectWin_4
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 401
+        width: 186
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 463a22edbcbbaeb48b5fc439a9e2684a
+      internalID: 970422901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectWin_31
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 262
+        width: 223
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99b075a470b26a74d9a074450a1685aa
+      internalID: -430656965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectWin_32
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 268
+        width: 220
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f1abb04ba537fb4db73f0c7548b12d7
+      internalID: -872460313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectWin_33
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 269
+        width: 225
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6f7408d743ed0143a2cd76db33961a1
+      internalID: -1284391913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectWin_34
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 267
+        width: 224
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03eac4af0f7fa7e4c9959cd5cb38b51f
+      internalID: -807931696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectWin_51
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 143
+        width: 208
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcffdb66f67f24043ab77167477bb23a
+      internalID: 816591229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectWin_52
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 146
+        width: 208
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 209d056e3e7a7d9429f4b943967be29e
+      internalID: 2136378018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectWin_53
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 148
+        width: 211
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a5dc78b35591004ab19d1cc886bef0a
+      internalID: 1532676303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectWin_54
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 149
+        width: 214
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd56233d26f279343a0f150438c38b73
+      internalID: 938136113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectWin_55
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 20
+        width: 186
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8d87037dd71b474580608b60515c15f
+      internalID: -1393130738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectWin_56
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 19
+        width: 188
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcb9972a842b0ce459ddea6135b332e3
+      internalID: -654884059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectWin_57
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 18
+        width: 189
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 584c4a714af04f841806e722f3b5bb13
+      internalID: 1385787167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EffectWin_58
+      rect:
+        serializedVersion: 2
+        x: 798
+        y: 18
+        width: 189
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6609ea7d9f890cf458d76acf242a354a
+      internalID: 1649118548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +447,66 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      EffectWin_0: -1021021529
+      EffectWin_1: -1214080715
+      EffectWin_10: 942331153
+      EffectWin_11: -532705847
+      EffectWin_12: -1850720112
+      EffectWin_13: 121661166
+      EffectWin_14: -2006904152
+      EffectWin_15: -1120881784
+      EffectWin_16: 1446013911
+      EffectWin_17: 584774603
+      EffectWin_18: -1845936428
+      EffectWin_19: -900075117
+      EffectWin_2: -1438211810
+      EffectWin_20: 234304109
+      EffectWin_21: 1662796244
+      EffectWin_22: 2020857355
+      EffectWin_23: 460946488
+      EffectWin_24: -1938241930
+      EffectWin_25: -1802886057
+      EffectWin_26: -1278167829
+      EffectWin_27: -1977781286
+      EffectWin_28: 1421668414
+      EffectWin_29: -2007926451
+      EffectWin_3: 1850377950
+      EffectWin_30: 668824915
+      EffectWin_31: -430656965
+      EffectWin_32: -872460313
+      EffectWin_33: -1284391913
+      EffectWin_34: -807931696
+      EffectWin_35: 1819227447
+      EffectWin_36: 1111144156
+      EffectWin_37: -2012208815
+      EffectWin_38: 1752955175
+      EffectWin_39: -1440104989
+      EffectWin_4: 970422901
+      EffectWin_40: -50056988
+      EffectWin_41: 1691394975
+      EffectWin_42: -1017096030
+      EffectWin_43: -1915385056
+      EffectWin_44: -1726150700
+      EffectWin_45: -1393746433
+      EffectWin_46: -1780665992
+      EffectWin_47: -1669163766
+      EffectWin_48: 704170159
+      EffectWin_49: -1167443536
+      EffectWin_5: 1139403532
+      EffectWin_50: -1236652258
+      EffectWin_51: 816591229
+      EffectWin_52: 2136378018
+      EffectWin_53: 1532676303
+      EffectWin_54: 938136113
+      EffectWin_55: -1393130738
+      EffectWin_56: -654884059
+      EffectWin_57: 1385787167
+      EffectWin_58: 1649118548
+      EffectWin_6: -827718332
+      EffectWin_7: -341374524
+      EffectWin_8: -136290524
+      EffectWin_9: -363128481
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

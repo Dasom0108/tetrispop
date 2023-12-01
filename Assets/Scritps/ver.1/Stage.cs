@@ -17,13 +17,14 @@ public class Stage : MonoBehaviour
     public Transform backgroundNode;
     public Transform boardNode;
     public Transform tetrominoNode;
-    public GameObject gameoverPanel;
+    public GameObject gameoverPanel1;
     public Transform previewNode;
 
 
     public TextMeshProUGUI score;
     public TextMeshProUGUI level;
     public TextMeshProUGUI line;
+    public TextMeshProUGUI Atktext;
 
     public int GetDmg; // 받은 데미지
     public int AtkG; // 공격 게이지 
@@ -65,6 +66,24 @@ public class Stage : MonoBehaviour
     public Sprite CityS;
     public Sprite CityT;
 
+    [Header("Poket")]
+    public Sprite PoketI;
+    public Sprite PoketL;
+    public Sprite PoketJ;
+    public Sprite PoketO;
+    public Sprite PoketZ;
+    public Sprite PoketS;
+    public Sprite PoketT;
+
+    [Header("Mario")]
+    public Sprite MarioI;
+    public Sprite MarioL;
+    public Sprite MarioJ;
+    public Sprite MarioO;
+    public Sprite MarioZ;
+    public Sprite MarioS;
+    public Sprite MarioT;
+
 
     // UI 관련 변수
     private int scoreVal = 0;
@@ -73,7 +92,6 @@ public class Stage : MonoBehaviour
 
     private int indexVal = -1;
 
-    public bool isReady;
     public enum Chara {City, DDD, Kirby, Mario, Pikachu, Ditto, Isabell, Kuppa };
     public int NowChara = (int)Chara.City;
 
@@ -91,11 +109,12 @@ public class Stage : MonoBehaviour
         score.text = "Score: " + scoreVal;
         level.text = "Lv: " + levelVal;
         line.text = "Line: " + lineVal;
+        Atktext.text = (AtkG * 10) + "%";
         AtkG = 0;
         GetDmg = 0;
 
         // 게임 시작시 게임오버 패널 off
-        gameoverPanel.SetActive(false);
+        gameoverPanel1.SetActive(false);
 
         halfWidth = Mathf.RoundToInt(boardWidth * 0.5f);    // 너비의 중간값 설정해주기
         halfHeight = Mathf.RoundToInt(boardHeight * 0.5f);   // 높이의 중간값 설정해주기
@@ -119,7 +138,7 @@ public class Stage : MonoBehaviour
     void Update()   // 매 프레임마다 실행
     {
         // 게임오버 처리
-        if (gameoverPanel.activeSelf)
+        if (gameoverPanel1.activeSelf)
         {
             if (Input.GetKeyDown("r"))
             {
@@ -220,7 +239,7 @@ public class Stage : MonoBehaviour
                 //테트로미노 새로 추가 직후 이동 가능 확인
                 if (!CanMoveTo(tetrominoNode))
                 {
-                    gameoverPanel.SetActive(true);
+                    gameoverPanel1.SetActive(true);
                 }
             }
 
@@ -270,6 +289,7 @@ public class Stage : MonoBehaviour
                 isCleared = true;
                 linecount++;
                 AtkG = linecount + AtkG;
+                Atktext.text = (AtkG * 10) + "%";
                 stage2.GetDmg = AtkG;
             }
         }
@@ -350,17 +370,34 @@ public class Stage : MonoBehaviour
         // 미리보기 테트로미노 생성 위치 (우측 상단)
         previewNode.position = new Vector2(halfWidth + 2.5f, halfHeight - 1);
 
-        switch (Chara.City)
+        switch (NowChara)
         {
             case 0:
+            case 6:
                 {
                     PrevSkinCreate(CityI, CityL, CityJ, CityO, CityZ, CityS, CityT);
                     break;
                 }
+
+            case 1:
+            case 2:
+                {
+                    PrevSkinCreate(KirbyI, KirbyL, KirbyJ, KirbyO, KirbyZ, KirbyS, KirbyT);
+                    break;
+                }
+            case 3:
+            case 7:
+                {
+                    PrevSkinCreate(MarioI, MarioL, MarioJ, MarioO, MarioZ, MarioS, MarioT);
+                    break;
+                }
+            case 4:
+            case 5:
+                {
+                    PrevSkinCreate(PoketI, PoketL, PoketJ, PoketO, PoketZ, PoketS, PoketT);
+                    break;
+                }
         }
-
-
-
 
         
     }
@@ -471,11 +508,30 @@ public class Stage : MonoBehaviour
         // 테트로미노 생성 위치 (중앙 상단)   
         tetrominoNode.position = new Vector2(0, halfHeight);
 
-        switch (Chara.City)
+        switch (NowChara)
         {
             case 0:
+            case 6:
                 {
                     CreateSkin(index,CityI, CityL, CityJ, CityO, CityZ, CityS, CityT);
+                    break;
+                }
+            case 1:
+            case 2:
+                {
+                    CreateSkin(index,KirbyI, KirbyL, KirbyJ, KirbyO, KirbyZ, KirbyS, KirbyT);
+                    break;
+                }
+            case 3:
+            case 7:
+                {
+                    CreateSkin(index, MarioI, MarioL, MarioJ, MarioO, MarioZ, MarioS, MarioT);
+                    break;
+                }
+            case 4:
+            case 5:
+                {
+                    CreateSkin(index, PoketI, PoketL, PoketJ, PoketO, PoketZ, PoketS, PoketT);
                     break;
                 }
         }
