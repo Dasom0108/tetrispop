@@ -10,6 +10,17 @@ public class ChangeSkin : MonoBehaviour
     SpriteRenderer P1BG;
     SpriteRenderer P1Profile;
 
+    // game sound,BG
+    [Header("BG")]
+    public GameObject MarioGmaeBG;
+    public GameObject KirbyGameBG;
+    public GameObject PoketmonGameBG;
+    public GameObject AnimalCrossingGameBG;
+    [Header("BGM")]
+    public GameObject KirbySound;
+    public GameObject MarioSound;
+    public GameObject AnimalSound;
+
     private int nowP1Character;
 
     [Header("Animal")]
@@ -37,23 +48,25 @@ public class ChangeSkin : MonoBehaviour
     public Sprite Dittoprofile;
 
     [Header("Character")]
-    public SpriteRenderer Kirby;
-    public SpriteRenderer DDD;
+    public GameObject Citizen;
+    public GameObject DDD;
+    public GameObject kirby;
+    public GameObject Mario;
 
     GameManager gameManager;
 
     private void Start()
     {
-        DDD.enabled = false;
-        Kirby.enabled = false;
+        Citizen.SetActive(false);
+        DDD.SetActive(false);
+        kirby.SetActive(false);
+        Mario.SetActive(false);
+
 
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         P1Frame = GameObject.Find("P1Frame").GetComponent<SpriteRenderer>();
         P1BG = GameObject.Find("P1BG").GetComponent<SpriteRenderer>();
         P1Profile = GameObject.Find("P1Profile").GetComponent<SpriteRenderer>();
-
-        DDD = GameObject.Find("P1DDD").GetComponent<SpriteRenderer>();
-        Kirby = GameObject.Find("P1Kriby").GetComponent<SpriteRenderer>();
 
         nowP1Character = gameManager.P1chara;
 
@@ -68,23 +81,36 @@ public class ChangeSkin : MonoBehaviour
                 P1Frame.sprite = AnimalFrame;
                 P1BG.sprite = AnimalBG;
                 P1Profile.sprite = citizenprofile;
+
+                AnimalCrossingGameBG.SetActive(true);
+                AnimalSound.SetActive(true);
+
+                Citizen.SetActive(true);
                 break;
             case (1):
                 P1Frame.sprite = KirbyFrame;
                 P1BG.sprite = KirbyBG;
                 P1Profile.sprite = DDDprofile;
-                DDD.enabled = true;
+
+               KirbyGameBG.SetActive(true);
+                KirbySound.SetActive(true);
+
+                DDD.SetActive(true);
                 break;
             case (2):
                 P1Frame.sprite = KirbyFrame;
                 P1BG.sprite = KirbyBG;
                 P1Profile.sprite = Kribyprofile;
-                Kirby.enabled = true;
+                KirbyGameBG.SetActive(true);
+                KirbySound.SetActive(true);
+
+                kirby.SetActive(true);
                 break;
             case (3):
                 P1Frame.sprite = MarioFrame;
                 P1BG.sprite = MarioBG;
                 P1Profile.sprite = Marioprofile;
+                Mario.SetActive(true);
                 break;
             case (4):
                 P1Frame.sprite = PoketmonFrame;
@@ -100,6 +126,10 @@ public class ChangeSkin : MonoBehaviour
                 P1Frame.sprite = AnimalFrame;
                 P1BG.sprite = AnimalBG;
                 P1Profile.sprite = isabellprofile;
+
+                AnimalCrossingGameBG.SetActive(true);
+                AnimalSound.SetActive(true);
+
                 break;
             case (7):
                 P1Frame.sprite = MarioFrame;

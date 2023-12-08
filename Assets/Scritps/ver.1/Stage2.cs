@@ -85,6 +85,9 @@ public class Stage2 : MonoBehaviour
     public Sprite MarioS;
     public Sprite MarioT;
 
+    [Header("Effect")]
+    public GameObject Movesfx;
+    public GameObject Dropsfx;
 
     // UI 관련 변수
     private int scoreVal = 0;
@@ -92,6 +95,8 @@ public class Stage2 : MonoBehaviour
     private int lineVal;
 
     private int indexVal = -1;
+    public bool isdeleted;
+
 
     public enum Chara { City, DDD, Kirby, Mario, Pikachu, Ditto, Isabell, Kuppa };
     public int NowChara = (int)Chara.City;
@@ -157,20 +162,28 @@ public class Stage2 : MonoBehaviour
             if (Input.GetKeyDown("left"))
             {
                 moveDir.x = -1;
+                Movesfx.SetActive(true);
+                Invoke("OffMovesfxSound", 0.3f);
 
             }
             else if (Input.GetKeyDown("right"))
             {
                 moveDir.x = 1;
+                Movesfx.SetActive(true);
+                Invoke("OffMovesfxSound", 0.3f);
             }
 
             if (Input.GetKeyDown("up"))
             {
                 isRotate = true;
+                Movesfx.SetActive(true);
+                Invoke("OffMovesfxSound", 0.3f);
             }
             else if (Input.GetKeyDown("down"))
             {
                 moveDir.y = -1;
+                Movesfx.SetActive(true);
+                Invoke("OffMovesfxSound", 0.3f);
             }
 
             if (Input.GetKeyDown("r"))
@@ -186,6 +199,8 @@ public class Stage2 : MonoBehaviour
                 while (MoveTetromino(Vector3.down, false))
                 {
                 }
+                Dropsfx.SetActive(true);
+                Invoke("OffDropfxSound", 0.3f);
             }
 
 
@@ -202,6 +217,12 @@ public class Stage2 : MonoBehaviour
             {
                 MoveTetromino(moveDir, isRotate);
             }
+        }
+
+        if (AtkG >= 10)
+        {
+            AtkG = 0;
+            Atktext.text = (AtkG * 10) + "%";
         }
     }
 
@@ -231,10 +252,7 @@ public class Stage2 : MonoBehaviour
             {
                 AddToBoard(tetrominoNode);
                 CheckBoardColumn();
-                if (GetDmg >= 10)
-                {
-                    //Attack();
-                }
+
                 CreateTetromino();
                 Debug.Log("2P" + GetDmg);
 
@@ -242,6 +260,8 @@ public class Stage2 : MonoBehaviour
                 if (!CanMoveTo(tetrominoNode))
                 {
                     gameoverPanel.SetActive(true);
+                    gameManager.Gameover = true;
+
                 }
             }
 
@@ -290,6 +310,7 @@ public class Stage2 : MonoBehaviour
                 column.DetachChildren();
                 isCleared = true;
                 linecount++;
+                isdeleted = true;
                 AtkG = linecount + AtkG;
                 Atktext.text = (AtkG * 10) + "%";
                 stage.GetDmg = AtkG;
@@ -467,6 +488,15 @@ public class Stage2 : MonoBehaviour
         }
     }
 
+    public void OffMovesfxSound()
+    {
+        Movesfx.SetActive(false);
+    }
+
+    public void OffDropfxSound()
+    {
+        Dropsfx.SetActive(false);
+    }
 
     // 이동 가능한지 체크 후 True or False 반환하는 메서드
     bool CanMoveTo(Transform root)  //tetrominoNode를 매개변수 root로 가져오기

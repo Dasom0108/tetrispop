@@ -8,8 +8,6 @@ using TMPro;
 
 public class Stage : MonoBehaviour
 {
-
-
     //필요 소스 불러오기
     [Header("Source")]
     public GameObject tilePrefab;
@@ -84,6 +82,9 @@ public class Stage : MonoBehaviour
     public Sprite MarioS;
     public Sprite MarioT;
 
+    [Header("Effect")]
+    public GameObject Movesfx;
+    public GameObject Dropsfx;
 
     // UI 관련 변수
     private int scoreVal = 0;
@@ -91,16 +92,19 @@ public class Stage : MonoBehaviour
     private int lineVal;
 
     private int indexVal = -1;
+    public bool isdeleted;
 
     public enum Chara {City, DDD, Kirby, Mario, Pikachu, Ditto, Isabell, Kuppa };
     public int NowChara = (int)Chara.City;
 
     Stage2 stage2;
     GameManager gameManager;
+
     private void Start() 
     {
         stage2 = GameObject.Find("2p Stage").GetComponent<Stage2>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
 
         //캐릭터
         NowChara = gameManager.P1chara;
@@ -120,7 +124,6 @@ public class Stage : MonoBehaviour
         halfHeight = Mathf.RoundToInt(boardHeight * 0.5f);   // 높이의 중간값 설정해주기
 
         nextFallTime = Time.time + fallCycle;   // 다음에 테트로미노가 떨어질 시간 설정
-
         CreateBackground(); // 배경 만들기
                             // 높이만큼 행 노드 만들어주기
         for (int i = 0; i < boardHeight; ++i)
@@ -155,20 +158,28 @@ public class Stage : MonoBehaviour
             if (Input.GetKeyDown("a"))
             {
                 moveDir.x = -1;
+                Movesfx.SetActive(true);
+                Invoke("OffMovesfxSound", 0.3f);
 
             }
             else if (Input.GetKeyDown("d"))
             {
                 moveDir.x = 1;
+                Movesfx.SetActive(true);
+                Invoke("OffMovesfxSound", 0.3f);
             }
 
             if (Input.GetKeyDown("w"))
             {
                 isRotate = true;
+                Movesfx.SetActive(true);
+                Invoke("OffMovesfxSound", 0.3f);
             }
             else if (Input.GetKeyDown("s"))
             {
                 moveDir.y = -1;
+                Movesfx.SetActive(true);
+                Invoke("OffMovesfxSound", 0.3f);
             }
 
             if (Input.GetKeyDown("r"))
@@ -184,6 +195,8 @@ public class Stage : MonoBehaviour
                 while (MoveTetromino(Vector3.down, false))
                 {
                 }
+                Dropsfx.SetActive(true);
+                Invoke("OffDropfxSound", 0.3f);
             }
 
 
@@ -201,6 +214,12 @@ public class Stage : MonoBehaviour
                 MoveTetromino(moveDir, isRotate);
             }
 
+        }
+
+        if(AtkG >= 10)
+        {
+            AtkG = 0;
+            Atktext.text = (AtkG * 10) + "%";
         }
     }
 
@@ -240,6 +259,7 @@ public class Stage : MonoBehaviour
                 if (!CanMoveTo(tetrominoNode))
                 {
                     gameoverPanel1.SetActive(true);
+                    gameManager.Gameover = true;
                 }
             }
 
@@ -288,6 +308,8 @@ public class Stage : MonoBehaviour
                 column.DetachChildren();
                 isCleared = true;
                 linecount++;
+                isdeleted = true;
+                Debug.Log(isdeleted);
                 AtkG = linecount + AtkG;
                 Atktext.text = (AtkG * 10) + "%";
                 stage2.GetDmg = AtkG;
@@ -460,6 +482,15 @@ public class Stage : MonoBehaviour
         }
     }
 
+    public void OffMovesfxSound()
+    {
+        Movesfx.SetActive(false);
+    }
+
+    public void OffDropfxSound()
+    {
+        Dropsfx.SetActive(false);
+    }
 
     // 이동 가능한지 체크 후 True or False 반환하는 메서드
     bool CanMoveTo(Transform root)  //tetrominoNode를 매개변수 root로 가져오기
@@ -646,4 +677,5 @@ public class Stage : MonoBehaviour
             CreateTile(backgroundNode, new Vector2(x, -halfHeight), color, img, 0);
         }
     }
+
 }

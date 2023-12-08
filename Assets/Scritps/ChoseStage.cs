@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ChoseStage : MonoBehaviour
 {
@@ -12,20 +13,21 @@ public class ChoseStage : MonoBehaviour
     public Sprite PikachuOn;
 
     [Header("Pick")]
-    public Sprite Citizen;
-    public Sprite DDD;
-    public Sprite Kirby;
-    public Sprite Mario;
-    public Sprite Pikachu;
-    public Sprite Ditto;
-    public Sprite Isabell;
-    public Sprite Kuppa;
+    public Sprite Citizen1;
+    public Sprite Kirby1;
+    public Sprite Mario1;
+    public Sprite Pikachu1;
+
+    [Header("Pick2")]
+    public Sprite DDD2;
+    public Sprite Ditto2;
+    public Sprite Isabell2;
+    public Sprite Kuppa2;
 
     public RectTransform rectTransform;
     private Vector3 MaxLimit;
     private Vector3 MinLimit;
 
-    GameManager gameManager;
     private bool isChoose;
     public enum Chara { City, Kirby, Mario, Pikachu };
     public int P1chara;
@@ -33,10 +35,12 @@ public class ChoseStage : MonoBehaviour
     public Image OnePick;
     public Image TwoPick;
 
+    public GameObject ClickSfx;
+    public GameObject ChoseSfx;
+
     void Start()
     {
         isChoose = false;
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         rectTransform = this.GetComponent<RectTransform>();
         OnePick = GameObject.Find("1Pptick").GetComponent<Image>();
         TwoPick = GameObject.Find("2Pptick").GetComponent<Image>();
@@ -65,24 +69,17 @@ public class ChoseStage : MonoBehaviour
         {
             moveDir.x -= 342f;
             rectTransform.localPosition = moveDir;
+            ClickSfx.SetActive(true);
+            Invoke("OffClickSound", 0.3f);
 
         }
         else if (Input.GetKeyDown("d"))
         {
             moveDir.x += 342f;
             rectTransform.localPosition = moveDir;
+            ClickSfx.SetActive(true);
+            Invoke("OffClickSound", 0.3f);
 
-        }
-
-        if (Input.GetKeyDown("w"))
-        {
-            moveDir.y += 215;
-            rectTransform.localPosition = moveDir;
-        }
-        else if (Input.GetKeyDown("s"))
-        {
-            moveDir.y -= 215;
-            rectTransform.localPosition = moveDir;
         }
 
         if (moveDir.x <= MaxLimit.x || moveDir.x >= MinLimit.x || moveDir.y <= MinLimit.y || moveDir.y >= MaxLimit.y)
@@ -99,12 +96,13 @@ public class ChoseStage : MonoBehaviour
         {
             P1chara = (int)Chara.City;
             Debug.Log(P1chara);
-            gameManager.P1chara = P1chara;
-            gameManager.isP1ready = true;
+
             collision.gameObject.GetComponent<Image>().sprite = CitizenOn;
-            OnePick.sprite = Citizen;
+            OnePick.sprite = Citizen1;
+            TwoPick.sprite = Isabell2;
             isChoose = true;
             Bounce();
+            Invoke(LoadStage("AnimalCrossing"), 2);
 
         }
 
@@ -112,10 +110,10 @@ public class ChoseStage : MonoBehaviour
         {
             P1chara = (int)Chara.Kirby; //
             Debug.Log(P1chara);
-            gameManager.P1chara = P1chara;
-            gameManager.isP1ready = true;
+
             collision.gameObject.GetComponent<Image>().sprite = KirbyOn; // 
-            OnePick.sprite = Kirby; //
+            OnePick.sprite = Kirby1; //
+            OnePick.sprite = DDD2;
             isChoose = true;
             Bounce();
 
@@ -124,11 +122,10 @@ public class ChoseStage : MonoBehaviour
         else if (collision.name == "MarioOff" && Input.GetKey(KeyCode.Space))
         {
             P1chara = (int)Chara.Mario; //
-            Debug.Log(P1chara);
-            gameManager.P1chara = P1chara;
-            gameManager.isP1ready = true;
+
             collision.gameObject.GetComponent<Image>().sprite = MarioOn; // 
-            OnePick.sprite = Mario; //
+            OnePick.sprite = Mario1; //
+            TwoPick.sprite = Kuppa2;
             isChoose = true;
             Bounce();
 
@@ -138,15 +135,21 @@ public class ChoseStage : MonoBehaviour
         {
             P1chara = (int)Chara.Pikachu; //
             Debug.Log(P1chara);
-            gameManager.P1chara = P1chara;
-            gameManager.isP1ready = true;
+
             collision.gameObject.GetComponent<Image>().sprite = PikachuOn; // 
-            OnePick.sprite = Pikachu; //
+            OnePick.sprite = Pikachu1; //
+            TwoPick.sprite = Ditto2;
             isChoose = true;
             Bounce();
 
         }
     }
+    string LoadStage(string name)
+    {
+        SceneManager.LoadScene(name);
+        return null;
+    }
+
     private void Bounce()
     {
         float time = 0;
@@ -166,5 +169,10 @@ public class ChoseStage : MonoBehaviour
             transform.localScale = Vector3.one;
         }
         time += Time.deltaTime;
+    }
+
+    public void OffClickSound()
+    {
+        ClickSfx.SetActive(false);
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class Pick : MonoBehaviour
 {
@@ -30,6 +31,9 @@ public class Pick : MonoBehaviour
     private Vector3 MinLimit;
 
     GameManager gameManager;
+    public GameObject ClickSfx;
+    public GameObject ChoseSfx;
+
     private bool isChoose;
     public enum Chara { City, DDD, Kirby, Mario, Pikachu, Ditto, Isabell, Kuppa };
     public int P1chara;
@@ -55,6 +59,10 @@ public class Pick : MonoBehaviour
         {
             Move();
         }
+        else
+        {
+            ChoseSfx.SetActive(true);
+        }
 
     }
 
@@ -62,17 +70,21 @@ public class Pick : MonoBehaviour
     {
         Vector3 moveDir = rectTransform.localPosition;
         Vector3 oldDir = rectTransform.localPosition;
-
+        
         if (Input.GetKeyDown("a"))
         {
             moveDir.x -= 342f;
             rectTransform.localPosition = moveDir;
+            ClickSfx.SetActive(true);
+            Invoke("OffClickSound", 0.3f);
 
         }
         else if (Input.GetKeyDown("d"))
         {
             moveDir.x += 342f;
             rectTransform.localPosition = moveDir;
+            ClickSfx.SetActive(true);
+            Invoke("OffClickSound", 0.3f);
 
         }
 
@@ -80,13 +92,17 @@ public class Pick : MonoBehaviour
         {
             moveDir.y += 215;
             rectTransform.localPosition = moveDir;
+            ClickSfx.SetActive(true);
+            Invoke("OffClickSound", 0.3f);
         }
         else if (Input.GetKeyDown("s"))
         {
             moveDir.y -= 215;
             rectTransform.localPosition = moveDir;
+            ClickSfx.SetActive(true);
+            Invoke("OffClickSound", 0.3f);
         }
-
+        
         if(moveDir.x <= MaxLimit.x || moveDir.x >= MinLimit.x || moveDir.y <= MinLimit.y || moveDir.y >= MaxLimit.y)
         {
             rectTransform.localPosition = oldDir;
@@ -222,5 +238,8 @@ public class Pick : MonoBehaviour
         }
         time += Time.deltaTime;
     }
-
+    public void OffClickSound()
+    {
+        ClickSfx.SetActive(false);
+    }
 }

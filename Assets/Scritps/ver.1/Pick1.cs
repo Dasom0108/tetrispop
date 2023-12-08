@@ -29,6 +29,9 @@ public class Pick1 : MonoBehaviour
     private Vector3 MaxLimit;
     private Vector3 MinLimit;
 
+    public GameObject ClickSfx;
+    public GameObject ChoseSfx;
+
     GameManager gameManager;
     private bool isChoose;
     public enum Chara { City, DDD, Kirby, Mario, Pikachu, Ditto, Isabell, Kuppa };
@@ -44,7 +47,7 @@ public class Pick1 : MonoBehaviour
         OnePick = GameObject.Find("2Pptick").GetComponent<Image>();
 
         MaxLimit.x = -523f;
-        MinLimit.x = 510f;
+        MinLimit.x = 520f;
         MaxLimit.y = 0;
         MinLimit.y = -416;
     }
@@ -54,6 +57,10 @@ public class Pick1 : MonoBehaviour
         if(!isChoose)
         {
             Move();
+        }
+        else
+        {
+            ChoseSfx.SetActive(true);
         }
 
     }
@@ -67,12 +74,16 @@ public class Pick1 : MonoBehaviour
         {
             moveDir.x -= 342f;
             rectTransform.localPosition = moveDir;
+            ClickSfx.SetActive(true);
+            Invoke("OffClickSound", 0.3f);
 
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             moveDir.x += 342f;
             rectTransform.localPosition = moveDir;
+            ClickSfx.SetActive(true);
+            Invoke("OffClickSound", 0.3f);
 
         }
 
@@ -80,11 +91,15 @@ public class Pick1 : MonoBehaviour
         {
             moveDir.y += 215;
             rectTransform.localPosition = moveDir;
+            ClickSfx.SetActive(true);
+            Invoke("OffClickSound", 0.3f);
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             moveDir.y -= 215;
             rectTransform.localPosition = moveDir;
+            ClickSfx.SetActive(true);
+            Invoke("OffClickSound", 0.3f);
         }
 
         if(moveDir.x <= MaxLimit.x || moveDir.x >= MinLimit.x || moveDir.y <= MinLimit.y || moveDir.y >= MaxLimit.y)
@@ -221,6 +236,11 @@ public class Pick1 : MonoBehaviour
             transform.localScale = Vector3.one;
         }
         time += Time.deltaTime;
+    }
+
+    public void OffClickSound()
+    {
+        ClickSfx.SetActive(false);
     }
 
 }

@@ -5,8 +5,7 @@ using UnityEngine.UI;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class ChangeSkin1 : MonoBehaviour
-{
-    //1P           
+{          
     SpriteRenderer Frame;
     SpriteRenderer BG;
     SpriteRenderer Profile;
@@ -37,20 +36,27 @@ public class ChangeSkin1 : MonoBehaviour
     public Sprite Dittoprofile;
 
     [Header("Character")]
-    public SpriteRenderer Kirby;
-   public SpriteRenderer DDD;
+    public GameObject Citizen;
+    public GameObject DDD;
+    public GameObject kirby;
+    public GameObject Mario;
+
 
     GameManager gameManager;
 
     private void Start()
     {
+        Citizen.SetActive(false);
+        DDD.SetActive(false);
+        kirby.SetActive(false);
+        Mario.SetActive(false);
+
+
+
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         Frame = GameObject.Find("P2Frame").GetComponent<SpriteRenderer>();
         BG = GameObject.Find("P2BG").GetComponent<SpriteRenderer>();
         Profile = GameObject.Find("P2Profile").GetComponent<SpriteRenderer>();
-
-        DDD = GameObject.Find("P1DDD").GetComponent<SpriteRenderer>();
-        Kirby = GameObject.Find("P1Kriby").GetComponent<SpriteRenderer>();
 
          
         nowP2Character = gameManager.P2chara;
@@ -66,23 +72,25 @@ public class ChangeSkin1 : MonoBehaviour
                Frame.sprite = AnimalFrame;
                BG.sprite = AnimalBG;
                Profile.sprite = citizenprofile;
+               Citizen.SetActive(true);
                 break;
             case (1):
                Frame.sprite = KirbyFrame;
                BG.sprite = KirbyBG;
                Profile.sprite = DDDprofile;
-               DDD.enabled = true;
+                DDD.SetActive(true);
                 break;
             case (2):
                 Frame.sprite = KirbyFrame;
                 BG.sprite = KirbyBG;
                 Profile.sprite = Kribyprofile;
-                Kirby.enabled = true;
+                kirby.SetActive(true);
                 break;
             case (3):
                Frame.sprite = MarioFrame;
                BG.sprite = MarioBG;
                Profile.sprite = Marioprofile;
+                Mario.SetActive(true);
                 break;
             case (4):
                 Frame.sprite = PoketmonFrame;
